@@ -1,40 +1,39 @@
 // Assignment Code
 
 var generateBtn = document.querySelector("#generate");
-var numeric;
-var lower;
-var upper;
-var special;
 
-(lower = [
-  "a",
-  "b",
-  "c",
-  "d",
-  "e",
-  "f",
-  "g",
-  "h",
-  "i",
-  "j",
-  "k",
-  "l",
-  "m",
-  "n",
-  "o",
-  "p",
-  "q",
-  "r",
-  "s",
-  "t",
-  "u",
-  "v",
-  "w",
-  "x",
-  "y",
-  "z",
-]),
-  (upper = [
+// Write password to the #password input
+function writePassword() {
+  const numeric = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "0"];
+  const lower = [
+    "a",
+    "b",
+    "c",
+    "d",
+    "e",
+    "f",
+    "g",
+    "h",
+    "i",
+    "j",
+    "k",
+    "l",
+    "m",
+    "n",
+    "o",
+    "p",
+    "q",
+    "r",
+    "s",
+    "t",
+    "u",
+    "v",
+    "w",
+    "x",
+    "y",
+    "z",
+  ];
+  const upper = [
     "A",
     "B",
     "C",
@@ -61,9 +60,8 @@ var special;
     "X",
     "Y",
     "Z",
-  ]),
-  (numeric = [1, 2, 3, 4, 5, 6, 7, 8, 9]),
-  (special = [
+  ];
+  const special = [
     "!",
     "#",
     "$",
@@ -80,75 +78,94 @@ var special;
     "/",
     ":",
     ";",
-    " < ",
     "=",
-    " > ",
-    " ? ",
     "@",
     "[",
-    "\\",
     "]",
-    " ^ ",
-    "_",
-    "`",
     "{",
     "|",
     "}",
     "~",
-  ]);
-// Write password to the #password input
-function writePassword() {
-  enter = parseInt(
-    prompt(
-      "How many characters would you like your password? Choose between 8 and 128"
-    )
+  ];
+
+  length = prompt(
+    "How many characters would you like your password? Choose between 8 and 128"
   );
-  specialAnswer = confirm("Would you like to use special characters?");
-  numericAnswer = confirm("Would you like to use numeric characters?");
-  lowerAnswer = confirm("Would you like to use lowercase characters?");
-  upperAnswer = confirm("Would you like to use uppercase characters?");
+  alert("You must select a choice to recieve a password!");
 
-  charSets = lower && upper && numeric && special;
+  var specialAnswer = confirm("Would you like to use special characters?");
+  var numericAnswer = confirm("Would you like to use numeric characters?");
+  var lowerAnswer = confirm("Would you like to use lowercase characters?");
+  var upperAnswer = confirm("Would you like to use uppercase characters?");
+
+  charSets = lower + upper + numeric + special;
+
+  const results = [];
+  const results2 = [];
+  const results3 = [];
+  const results4 = [];
+
+  if (Boolean(specialAnswer === true)) {
+    specialAnswer = results.concat(special);
+  } else {
+    specialAnswer = [];
+  }
+
+  if (Boolean(numericAnswer === true)) {
+    numericAnswer = results2.concat(numeric);
+  } else {
+    numericAnswer = [];
+  }
+  if (Boolean(lowerAnswer === true)) {
+    lowerAnswer = results3.concat(lower);
+  } else {
+    lowerAnswer = [];
+  }
+
+  if (Boolean(upperAnswer === true)) {
+    upperAnswer = results4.concat(upper);
+  } else {
+    upperAnswer = [];
+  }
+
+  const data = specialAnswer.concat(numericAnswer, lowerAnswer, upperAnswer);
+
+  console.log(data);
+  console.log(charSets);
+
   var pass = "";
-  var results = "";
 
-  if (specialAnswer === true) {
-    special + results;
-  } else {
-    specialAnswer = false;
+  // for (let i = 0; i <= length; i++) {
+  // var word = Math.floor(Math.random() * data.length + 1);
+
+  for (i = 0; i < length; i++) {
+    var word = data[Math.floor(data.length * Math.random())];
+
+    console.log(word);
+    pass += word.charAt(word);
   }
-  if (numericAnswer === true) {
-    numeric + results;
-  } else {
-    numericAnswer = false;
-  }
-  if (lowerAnswer === true) {
-    lower + results;
-  } else {
-    lowerAnswer = false;
-  }
-  if (upperAnswer === true) {
-    upper + results;
-  } else {
-    upperAnswer = false;
-  }
-
-  for (var i = 0; i < length; i++) {
-    password = results[i](Math.floor(Math.random() * results.length));
-
-    pass = results(password);
-
-    // var  = writePassword();
-    // var password = document.querySelector("#password");
-    // document.getElementById("Your Secure Password").placeholder = pass;
-    prompt(pass);
-  }
-  // console.log(pass);
-
-  // return pass;
-
-  // passwordText.value = password;
+  document.getElementById("password").placeholder = pass;
+  console.log(pass);
+  // var pass = document.querySelector("#password");
+  alert("Here is your password!   " + pass);
 }
+// console.log(pass);
+// return pass;
+
+// for (var i = 0; i < length; i++) {
+// password += data[i](Math.floor(Math.random() + 1));
+
+// console.log(text);
+// var  = writePassword();
+
+// }
+// }
+// console.log(pass);
+
+// return pass;
+
+// passwordText.value = password;
+// }
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
