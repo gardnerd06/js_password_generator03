@@ -14,6 +14,8 @@ Webpage for the deployed website:
 
 # Screenshots
 
+![Screenshot (8)](https://user-images.githubusercontent.com/115792714/206930461-7803ea66-4deb-45ca-b20e-a2a95adb466e.png)
+
 # License
 
 MIT LICENSE INCLUDED IN ROOT FILE.
