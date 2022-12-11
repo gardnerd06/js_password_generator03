@@ -93,6 +93,10 @@ function writePassword() {
   length = prompt(
     "How many characters would you like your password? Choose between 8 and 128"
   );
+  if (length < 8 || length > 128) {
+    alert("Character length less than set parameters.Try Again!");
+    return false;
+  }
   //set alert to notify users that they must make a choice to recieve a password
   alert("You must select a choice to recieve a password!");
   //created questions to give users control over which characters would be includes.
