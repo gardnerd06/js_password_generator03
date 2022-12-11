@@ -100,8 +100,6 @@ function writePassword() {
   var numericAnswer = confirm("Would you like to use numeric characters?");
   var lowerAnswer = confirm("Would you like to use lowercase characters?");
   var upperAnswer = confirm("Would you like to use uppercase characters?");
-  //combined all arrays in order to use them as a string/may remove as code is extra
-  charSets = lower + upper + numeric + special;
   //created empty arrays to store users answers in.
   const results = [];
   const results2 = [];
@@ -110,45 +108,42 @@ function writePassword() {
   //created true false if statements in order to allow code to include specific data
   if (Boolean(specialAnswer === true)) {
     specialAnswer = results.concat(special);
+    alert("You have chosen to include Special Characters!");
   } else {
     specialAnswer = [];
   }
 
   if (Boolean(numericAnswer === true)) {
     numericAnswer = results2.concat(numeric);
+    alert("You have chosen to include Numeric Characters!");
   } else {
     numericAnswer = [];
   }
   if (Boolean(lowerAnswer === true)) {
     lowerAnswer = results3.concat(lower);
+    alert("You have chosen to include Lowercase Characters!");
   } else {
     lowerAnswer = [];
   }
 
   if (Boolean(upperAnswer === true)) {
     upperAnswer = results4.concat(upper);
+    alert("You have chosen to include Uppercase Characters!");
   } else {
     upperAnswer = [];
   }
   //condensed user responses into one array to be used by the for loop to generate a password
   const data = specialAnswer.concat(numericAnswer, lowerAnswer, upperAnswer);
-  //use console logs to debug code/ extra code will remove
-  console.log(data);
-  console.log(charSets);
   //created empty variable to store password in
   var pass = "";
   //made for loop to run function and generate a password using the user responses.
   for (i = 0; i < length; i++) {
-    var word = data[Math.floor(data.length * Math.random())];
+    pass += data[Math.floor(data.length * Math.random())];
     //used console log to debug code and verify my info made it this far.
-    console.log(word);
-    pass += word.charAt(word);
   }
   //use provided code to place generated password inside html.
 
   document.getElementById("password").placeholder = pass;
-  console.log(pass);
-  // var pass = document.querySelector("#password");
   alert("Here is your password!   " + pass);
 }
 
